@@ -28,6 +28,23 @@
             object-fit: cover;
             z-index: -1;
             pointer-events: none;
+            /* Mobile video optimizations */
+            -webkit-playsinline: true;
+            playsinline: true;
+            webkit-playsinline: true;
+        }
+
+        /* Mobile video optimizations */
+        @media (max-width: 768px) {
+            video {
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
+                object-position: center;
+                /* Ensure video plays on mobile */
+                -webkit-playsinline: true;
+                playsinline: true;
+            }
         }
 
         video::-webkit-media-controls {
@@ -80,12 +97,37 @@
             z-index: 10;
             letter-spacing: 2px;
             text-transform: uppercase;
+            width: 90vw;
+            max-width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .coming-soon {
+                font-size: 32px;
+                top: 30px;
+                letter-spacing: 1px;
+                width: 95vw;
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .coming-soon {
+                font-size: 24px;
+                top: 20px;
+                letter-spacing: 0.5px;
+                width: 98vw;
+                padding: 0 5px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="coming-soon">Coming Soon</div>
-    <video autoplay muted loop>
+    <video autoplay muted loop playsinline webkit-playsinline>
         <source src="Copy of Dream Logo 2 (3).mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
