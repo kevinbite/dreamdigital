@@ -19,6 +19,14 @@
             background-color: #000;
         }
 
+        /* Mobile background fix */
+        @media (max-width: 768px) {
+            body {
+                background-color: #000;
+                background-image: linear-gradient(45deg, #000 0%, #111 100%);
+            }
+        }
+
         video {
             position: fixed;
             top: 0;
@@ -38,12 +46,23 @@
         @media (max-width: 768px) {
             video {
                 width: 100vw;
-                height: 100vh;
-                object-fit: cover;
+                height: auto;
+                min-height: 100vh;
+                object-fit: contain;
                 object-position: center;
                 /* Ensure video plays on mobile */
                 -webkit-playsinline: true;
                 playsinline: true;
+            }
+        }
+
+        @media (max-width: 480px) {
+            video {
+                width: 100vw;
+                height: auto;
+                min-height: 100vh;
+                object-fit: contain;
+                object-position: center;
             }
         }
 
