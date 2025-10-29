@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Session - Dream Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Source+Sans+Pro:wght@200;300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        /* Mobile background fix */
+        @media (max-width: 768px) {
+            body {
+                background-color: #000;
+                background-image: linear-gradient(45deg, #000 0%, #111 100%);
+            }
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+            pointer-events: none;
+            -webkit-playsinline: true;
+            playsinline: true;
+            webkit-playsinline: true;
+        }
+
+        /* Mobile video optimizations */
+        @media (max-width: 768px) {
+            video {
+                width: 100vw;
+                height: auto;
+                min-height: 100vh;
+                object-fit: contain;
+                object-position: center top;
+                -webkit-playsinline: true;
+                playsinline: true;
+            }
+        }
+
+        @media (max-width: 480px) {
+            video {
+                width: 100vw;
+                height: auto;
+                min-height: 100vh;
+                object-fit: contain;
+                object-position: center top;
+            }
+        }
+
+        video::-webkit-media-controls {
+            display: none !important;
+        }
+
+        video::-webkit-media-controls-panel {
+            display: none !important;
+        }
+
+        video::-webkit-media-controls-play-button {
+            display: none !important;
+        }
+
+        video::-webkit-media-controls-timeline {
+            display: none !important;
+        }
+
+        video::-webkit-media-controls-current-time-display {
+            display: none !important;
+        }
+
+        video::-webkit-media-controls-time-remaining-display {
+            display: none !important;
+        }
+
+        video::-webkit-media-controls-mute-button {
+            display: none !important;
+        }
+
+        video::-webkit-media-controls-volume-slider {
+            display: none !important;
+        }
+
+        video::-webkit-media-controls-fullscreen-button {
+            display: none !important;
+        }
+
+        /* Scheduler container */
+        .scheduler-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            overflow-y: auto;
+        }
+
+        .scheduler-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .scheduler-header h1 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 32px;
+            font-weight: 300;
+            color: #333;
+            margin: 0 0 8px 0;
+            letter-spacing: 1px;
+        }
+
+        .scheduler-header p {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 15px;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .scheduler-container {
+                width: 95%;
+                padding: 20px;
+                border-radius: 15px;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .scheduler-header h1 {
+                font-size: 28px;
+            }
+
+            .scheduler-header p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scheduler-container {
+                width: 98%;
+                padding: 15px;
+                border-radius: 10px;
+                top: 50%;
+            }
+
+            .scheduler-header h1 {
+                font-size: 24px;
+            }
+
+            .scheduler-header p {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline webkit-playsinline>
+        <source src="Copy of Dream Logo 2 (4).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="scheduler-container">
+        <div class="scheduler-header">
+            <h1>Book Your Session</h1>
+            <p>Dream Digital Meditation • November 17-20, 2025</p>
+        </div>
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/kevin-foundersrow/dream-digital-event-november-2025" style="min-width:320px;height:550px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
+    </div>
+
+    <script>
+        // Check if user has valid access token
+        const accessToken = sessionStorage.getItem('dreamDigitalAccess');
+        const accessEmail = sessionStorage.getItem('dreamDigitalEmail');
+        
+        if (!accessToken || !accessEmail) {
+            // No valid token, redirect to landing page
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
