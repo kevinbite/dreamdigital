@@ -251,14 +251,38 @@
         /* Mobile optimizations */
         @media (max-width: 768px) {
             .email-gate {
-                right: 15px;
-                top: 15px;
-                width: 260px;
-                padding: 18px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                right: auto;
+                transform: translate(-50%, -50%);
+                width: 85%;
+                max-width: 400px;
+                padding: 25px;
             }
 
             .email-gate h2 {
-                font-size: 18px;
+                font-size: 20px;
+            }
+
+            .email-gate p {
+                font-size: 13px;
+            }
+
+            .email-gate p.subtext {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .email-gate {
+                width: 90%;
+                max-width: 350px;
+                padding: 22px;
+            }
+
+            .email-gate h2 {
+                font-size: 19px;
             }
 
             .email-gate p {
@@ -267,27 +291,6 @@
 
             .email-gate p.subtext {
                 font-size: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .email-gate {
-                right: 10px;
-                top: 10px;
-                width: 240px;
-                padding: 16px;
-            }
-
-            .email-gate h2 {
-                font-size: 17px;
-            }
-
-            .email-gate p {
-                font-size: 11px;
-            }
-
-            .email-gate p.subtext {
-                font-size: 9px;
             }
         }
     </style>
