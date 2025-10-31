@@ -43,26 +43,28 @@
             webkit-playsinline: true;
         }
 
-        /* Mobile video optimizations */
-        @media (max-width: 768px) {
-            video {
-                width: 100vw;
-                height: auto;
-                min-height: 100vh;
-                object-fit: contain;
-                object-position: center top;
-                -webkit-playsinline: true;
-                playsinline: true;
-            }
+        /* Desktop video - show by default */
+        .desktop-video {
+            display: block;
         }
 
-        @media (max-width: 480px) {
-            video {
+        /* Mobile video - hidden by default */
+        .mobile-video {
+            display: none;
+        }
+
+        /* Mobile: hide desktop video, show mobile video */
+        @media (max-width: 768px) {
+            .desktop-video {
+                display: none;
+            }
+
+            .mobile-video {
+                display: block;
                 width: 100vw;
-                height: auto;
-                min-height: 100vh;
-                object-fit: contain;
-                object-position: center top;
+                height: 100vh;
+                object-fit: cover;
+                object-position: center;
             }
         }
 
@@ -252,10 +254,10 @@
         @media (max-width: 768px) {
             .email-gate {
                 position: fixed;
-                top: 50%;
+                top: 30px;
                 left: 50%;
                 right: auto;
-                transform: translate(-50%, -50%);
+                transform: translate(-50%, 0);
                 width: 70%;
                 max-width: 320px;
                 padding: 18px;
@@ -316,8 +318,15 @@
     </style>
 </head>
 <body>
-    <video autoplay muted loop playsinline webkit-playsinline>
+    <!-- Desktop video -->
+    <video class="desktop-video" autoplay muted loop playsinline webkit-playsinline>
         <source src="Still_Water_Video_Generation.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Mobile video -->
+    <video class="mobile-video" autoplay muted loop playsinline webkit-playsinline>
+        <source src="MOBILE-DD-BACKGROUND-VIDEO.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
