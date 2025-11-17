@@ -6,7 +6,7 @@
     <title>Dream Digital</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Source+Sans+Pro:wght@200;300&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Source+Sans+Pro:wght@200;300&family=Open+Sans:wght@300&family=Montserrat:wght@100;200;300&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
     <style>
@@ -17,7 +17,8 @@
         }
 
         body {
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             background-color: #000;
         }
 
@@ -29,6 +30,15 @@
             }
         }
 
+        /* Hero Section Container */
+        .hero-section {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 50;
+        }
+
         video {
             position: fixed;
             top: 0;
@@ -36,8 +46,8 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
-            z-index: -1;
             pointer-events: none;
+            z-index: 1;
             -webkit-playsinline: true;
             playsinline: true;
             webkit-playsinline: true;
@@ -107,7 +117,7 @@
 
         /* Email Gate Box - Glassmorphism */
         .email-gate {
-            position: fixed;
+            position: absolute;
             right: 30px;
             top: 30px;
             width: 280px;
@@ -118,7 +128,7 @@
             border-radius: 18px;
             padding: 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            z-index: 10;
+            z-index: 100;
         }
 
         .email-gate h2 {
@@ -253,7 +263,7 @@
         /* Mobile optimizations */
         @media (max-width: 768px) {
             .email-gate {
-                position: fixed;
+                position: absolute;
                 top: 30px;
                 left: 50%;
                 right: auto;
@@ -315,41 +325,182 @@
                 font-size: 11px;
             }
         }
+
+        /* Content Container */
+        .content-wrapper {
+            position: relative;
+            z-index: 50;
+            background: transparent;
+            width: 100vw;
+        }
+
+        /* Gradient overlay for readability */
+        .content-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            min-height: 100%;
+            background: linear-gradient(180deg, 
+                rgba(0, 0, 0, 0) 0%, 
+                rgba(0, 0, 0, 0.4) 15%, 
+                rgba(0, 0, 0, 0.7) 30%, 
+                rgba(0, 0, 0, 0.85) 50%, 
+                rgba(0, 0, 0, 0.95) 70%, 
+                rgba(0, 0, 0, 1) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* What is Dream Digital Section */
+        .what-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            position: relative;
+            z-index: 51;
+        }
+
+        .what-section-inner {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 18px;
+            padding: 60px 80px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .what-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 100;
+            color: #ffffff;
+            margin: 0 0 30px 0;
+            letter-spacing: 3px;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+        }
+
+        .what-section p {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.8;
+            margin: 0 0 20px 0;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.3px;
+        }
+
+        .what-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Mobile optimizations for What section */
+        @media (max-width: 768px) {
+            .what-section {
+                padding: 60px 20px;
+            }
+
+            .what-section-inner {
+                padding: 40px 30px;
+            }
+
+            .what-section h2 {
+                font-size: 32px;
+                margin-bottom: 24px;
+                letter-spacing: 2px;
+            }
+
+            .what-section p {
+                font-size: 16px;
+                line-height: 1.7;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .what-section {
+                padding: 40px 16px;
+            }
+
+            .what-section-inner {
+                padding: 30px 24px;
+                border-radius: 14px;
+            }
+
+            .what-section h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+                letter-spacing: 1.5px;
+            }
+
+            .what-section h2 .mobile-break {
+                display: inline;
+            }
+
+            .what-section p {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+        }
+
+        .mobile-break {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <!-- Desktop video -->
-    <video class="desktop-video" autoplay muted loop playsinline webkit-playsinline>
-        <source src="Still_Water_Video_Generation.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <!-- Desktop video -->
+        <video class="desktop-video" autoplay muted loop playsinline webkit-playsinline>
+            <source src="Still_Water_Video_Generation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
-    <!-- Mobile video -->
-    <video class="mobile-video" autoplay muted loop playsinline webkit-playsinline>
-        <source src="MOBILE-DD-BACKGROUND-VIDEO.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+        <!-- Mobile video -->
+        <video class="mobile-video" autoplay muted loop playsinline webkit-playsinline>
+            <source src="MOBILE-DD-BACKGROUND-VIDEO.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
 
-    <div class="email-gate">
-        <h2>Dream Digital Meditation</h2>
-        <p>November 17th - 20th, 2025</p>
-        <p class="subtext">Enter your email to book your session</p>
-        
-        <form id="emailForm">
-            <label for="email">Email Address</label>
-            <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                placeholder="your@email.com" 
-                required
-                autocomplete="email"
-            >
-            <button type="submit" id="submitBtn">Book Your Spot</button>
-        </form>
+        <div class="email-gate">
+            <h2>Dream Digital Meditation</h2>
+            <p>November 17th - 20th, 2025</p>
+            <p class="subtext">Enter your email to book your session</p>
+            
+            <form id="emailForm">
+                <label for="email">Email Address</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="your@email.com" 
+                    required
+                    autocomplete="email"
+                >
+                <button type="submit" id="submitBtn">Book Your Spot</button>
+            </form>
 
-        <div class="error-message" id="errorMessage"></div>
-        <div class="success-message" id="successMessage">Access granted! Redirecting...</div>
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage">Access granted! Redirecting...</div>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <section class="what-section">
+            <div class="what-section-inner">
+                <h2>What is<br class="mobile-break"> Dream Digital?</h2>
+                <p>Dream Digital is a transformative meditation experience designed to reconnect you with your inner peace and digital mindfulness. Through carefully curated guided sessions, using light, sound, and vibration, we help you find balance in an increasingly connected world.</p>
+                <p>Our unique approach combines ancient meditation techniques with modern understanding of digital wellness, creating a sanctuary for your mind to rest, restore, and&nbsp;rejuvenate.</p>
+                <p>An immersive journey that will transform the way you experience both technology and tranquility is coming to you soon.</p>
+            </div>
+        </section>
     </div>
 
     <script>
